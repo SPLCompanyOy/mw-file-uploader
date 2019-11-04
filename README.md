@@ -27,3 +27,8 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Process CSS changes
+```
+npx tailwind build src/styles.css -o src/output.css
+```
