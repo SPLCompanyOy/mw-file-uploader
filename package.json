@@ -1,8 +1,8 @@
 {
-  "name": "file-upload",
+  "name": "mw-file-uploader",
   "version": "0.1.0",
   "description": "Dependency-free library to uploading files.",
   "main": "fileupload.js",
-  "author": "",
+  "author": "mousewell",
   "license": "ISC"
 }
