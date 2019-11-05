@@ -1,21 +1,6 @@
-/*eslint no-unused-vars: "error"*/
+const File = require('./file')
 
-function log(content) {
-  // eslint-disable-next-line no-console
-  console.log(content)
-}
-
-log('init log')
-/**
- * A FileUploader
- * @typedef
- * @property {object} field - field the FileUploader is bound to
- * @property {object} fileList - fileList from the field's 'files' attribute
- * @property {function} updateFile - function called in field's input event
- * @property {function} loaded - callback function after new file has been added
- */
-
-export class FileUploader {
+module.exports = class FileUploader {
   /**
    * Creates an instance of {@link FileUploader}.
    *
@@ -64,11 +49,10 @@ export class FileUploader {
    */
   config() {
     this.field =
-    this.options.field && this.options.field.nodeName
-    ? this.options.field
-    : null
+      this.options.field && this.options.field.nodeName
+        ? this.options.field
+        : null
 
-    log(this.field)
     // set up the field
     this.field.addEventListener('change', this.handleAddEvent)
     this.field.setAttribute('class', this.options.fieldClass)
@@ -87,7 +71,7 @@ export class FileUploader {
 
     if (this.options.allowDrop) {
 
-      if(this.options.dropzone === null) {
+      if (this.options.dropzone === null) {
         this.options.dropzone = document.createElement('div')
         this.insertAfter(this.options.dropzone, document.querySelector(`label[for=${this.options.name}]`))
       }
@@ -129,7 +113,7 @@ export class FileUploader {
 
   add(files) {
     if (this.fileList.length > 0) this.fileList = []
-    const addedFiles = new File(files[0], this.fileList.length + 1)
+    var addedFiles = new File(files[0], this.fileList.length + 1)
 
     this.fileList.push(addedFiles)
     this.field.setAttribute('files', this.fileList)
@@ -167,42 +151,5 @@ export class FileUploader {
    */
   get value() {
     return this.field.value
-  }
-}
-
-class File {
-  constructor(file, id) {
-    // this.file = file
-    this.id = id
-    this.file = ''
-    this.objectURL = URL.createObjectURL(file)
-    this.fileName = file.name
-    this.fileExtension = this.extractFileExtension(file.name)
-    this.mimeType = file.type
-    this.fileSize = file.size
-    this.readFile = this.readFile.bind(this)
-    this.readFile(file)
-  }
-
-  extractFileExtension(fileName) {
-    if (fileName.length > 0) {
-      const index = fileName.lastIndexOf('.')
-
-      // checks if any index if found
-      return index > -1 ? fileName.slice(index) : ''
-    }
-    return ''
-  }
-
-  readFile(URL) {
-    let reader = new FileReader()
-    reader.addEventListener('load', event => {
-      this.file = event.target.result
-    })
-    reader.readAsDataURL(URL)
-
-    reader.addEventListener('load', event => {
-      this.objectURL = event.target.result
-    })
   }
 }
