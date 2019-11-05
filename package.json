@@ -1,6 +1,8 @@
 {
   "name": "file-upload",
   "version": "0.1.0",
-  "private": true,
-  "main": "fileupload.js"
+  "description": "Dependency-free library to uploading files.",
+  "main": "fileupload.js",
+  "author": "",
+  "license": "ISC"
 }
