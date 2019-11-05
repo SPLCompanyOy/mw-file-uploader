@@ -31,7 +31,7 @@ module.exports = class FileUploader {
     this.add = this.add.bind(this)
     this.remove = this.remove.bind(this)
     this.drop = this.drop.bind(this)
-    this.handleAddEvent = this.handleAddEvent.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
     this.config = this.config.bind(this)
 
     // Hooks -->
@@ -54,7 +54,7 @@ module.exports = class FileUploader {
         : null
 
     // set up the field
-    this.field.addEventListener('change', this.handleAddEvent)
+    this.field.addEventListener('change', this.handleInputChange)
     this.field.setAttribute('class', this.options.fieldClass)
     this.field.setAttribute('accept', this.options.accept)
 
@@ -105,7 +105,7 @@ module.exports = class FileUploader {
    * @function
    * @param {object} event The input event.
    */
-  handleAddEvent(event) {
+  handleInputChange(event) {
     // if file already exists, clear the fileList
     // @NOTE: if multiple file loading is later supported, this logic will need to be updated
     this.add(event.target.files)
