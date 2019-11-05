@@ -1,6 +1,5 @@
-module.exports = class File {
+class File {
   constructor(file, id) {
-    // this.file = file
     this.id = id
     this.file = ''
     this.objectURL = URL.createObjectURL(file)
@@ -15,8 +14,6 @@ module.exports = class File {
   extractFileExtension(fileName) {
     if (fileName.length > 0) {
       const index = fileName.lastIndexOf('.')
-
-      // checks if any index if found
       return index > -1 ? fileName.slice(index) : ''
     }
     return ''
@@ -34,3 +31,5 @@ module.exports = class File {
     })
   }
 }
+
+module.exports = File
