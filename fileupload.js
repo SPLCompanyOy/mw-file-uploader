@@ -25,8 +25,6 @@ module.exports = class FileUploader {
     this.field = null
     this.fileList = []
 
-    this.droppedFiles = false
-
     // Methods-->
     this.add = this.add.bind(this)
     this.remove = this.remove.bind(this)
