@@ -7,7 +7,8 @@
 With [npm](https://www.npmjs.com/):
 
 ```javascript
-npm install mw-file-uploader
+// last stable
+npm install mw-file-uploader@1.1.0
 ```
 
 ## Usage
@@ -39,8 +40,9 @@ Available options are:
 | :------------ | :---------- | :-------------------- | :----------- |
 | field         | HTMLElement | `null`                  | Input element, requires to have `type="file"` |
 | accept        | string      | `''` (empty string)     | One or more unique file type specifiers describing file types to allow, divided by comma. Example: `'.jpg,.png'` |
+| multiple      | boolean     | `false`                 | Enables adding multiple files. |
 | name          | string      | `'file-upload-input'`   | Used for the field's `name` and label's `for` attributes |
-| allowDrop     | boolean     | `false`                | Enables dragging and dropping files to the dropzone element. |
+| allowDrop     | boolean     | `false`                 | Enables dragging and dropping files to the dropzone element. |
 | dropzone      | HTMLElement | `null` if `allowDrop` is `false`. If `allowDrop` is `true` and dropzone element has not been defined, FileUploader will create an empty `<div>` below the input element. | Any HTML element where files can be dragged. Only works if `allowDrop` is `true`. |
 | onAddFile     | function    | `() => {}`              | Callback function that gets passed an array of the added files |
 | onRemoveFile  | function    | `() => {}`              | Callback function that gets passed an array of the removed files |
