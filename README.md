@@ -48,6 +48,7 @@ Available options are:
 | onRemoveFile  | function    | `() => {}`              | Callback function that gets passed an array of the removed files |
 | labelClass    | string      | `'file-uploader-label'` | Class(es) set to the label associated to the input field. |
 | fieldClass    | string      | `'file-uploader-input'` | Class(es) set to the input field. |
+| dropzoneClass | string      | `'file-uploader-dropzone'` | Class(es) set to the dropzone element. |
 
 ### Properties
 
