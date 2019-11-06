@@ -16,7 +16,8 @@ module.exports = function (options) {
     allowDrop: false,
     name: 'file-upload-input',
     labelClass: 'file-uploader-label',
-    fieldClass: 'file-uploader-input'
+    fieldClass: 'file-uploader-input',
+    dropzoneClass: 'file-uploader-dropzone'
   }
   this.options = Object.assign(this.options, options)
   this.field = null
@@ -24,10 +25,12 @@ module.exports = function (options) {
 
   this.add = function (files) {
     if (this.fileList.length > 0) this.fileList = []
-    const addedFiles = new File(files[0], this.fileList.length + 1)
-
-    this.fileList.push(addedFiles)
-    this.field.setAttribute('files', this.fileList)
+    let addedFiles = []
+    files.forEach(file => {
+      const newFile = new File(file, this.fileList.length + 1)
+      addedFiles.push(newFile)
+      this.fileList.push(newFile)
+    })
 
     this.options.onAddFile(addedFiles)
   }
@@ -38,8 +41,6 @@ module.exports = function (options) {
   }
 
   const config = function () {
-    console.log('this', this)
-
     this.field =
       this.options.field && this.options.field.nodeName
         ? this.options.field
@@ -83,11 +84,8 @@ module.exports = function (options) {
         event.preventDefault()
       })
 
-      /*
-      e.originalEvent.dataTransfer.files returns the list of files that were dropped.
-      */
       this.options.dropzone.addEventListener('drop', drop)
-      this.options.dropzone.setAttribute('class', 'file-uploader-dropzone')
+      this.options.dropzone.setAttribute('class', this.options.dropzoneClass)
     }
   }.bind(this)
 
