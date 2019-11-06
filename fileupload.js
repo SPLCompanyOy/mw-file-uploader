@@ -1,5 +1,7 @@
 'use strict'
 
+let File = require('./file')
+
 function insertAfter(newNode, referenceNode) {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
 }
