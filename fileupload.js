@@ -14,8 +14,6 @@ module.exports = function (options) {
     onRemoveFile: () => { },
     accept: '',
     allowDrop: false,
-    name: 'file-upload-input',
-    labelClass: 'file-uploader-label',
     fieldClass: 'file-uploader-input',
     dropzoneClass: 'file-uploader-dropzone'
   }
@@ -56,23 +54,12 @@ module.exports = function (options) {
     this.field.setAttribute('accept', this.options.accept)
     if (this.options.multiple) this.field.setAttribute('multiple', '')
 
-    // Add label before the field
-    this.field.setAttribute('name', this.options.name)
-    let label = document.createElement('label')
-    label.setAttribute('for', this.options.name)
-    label.setAttribute('class', this.options.labelClass)
-    label.addEventListener('click', () => {
-      this.field.click()
-    })
-    label.innerHTML = 'Add files'
-    insertAfter(label, this.field)
-
     if (this.options.allowDrop) {
       if (this.options.dropzone === null) {
         this.options.dropzone = document.createElement('div')
         this.insertAfter(
           this.options.dropzone,
-          document.querySelector(`label[for=${this.options.name}]`)
+          this.field
         )
       }
       /*
