@@ -59,7 +59,7 @@ In addition to the `options` property, FileUploader exposes additional propertie
 ### Methods
 
 * `add(files)`
-* `remove(files)`
+* `remove()`
 
 ## License
 
