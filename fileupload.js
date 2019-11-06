@@ -9,7 +9,7 @@ module.exports = function (options) {
   this.options = {
     field: null,
     dropzone: null,
-    multiple: true,
+    multiple: false,
     onAddFile: () => { },
     onRemoveFile: () => { },
     accept: '',
@@ -49,6 +49,7 @@ module.exports = function (options) {
     this.field.addEventListener('change', handleAddEvent)
     this.field.setAttribute('class', this.options.fieldClass)
     this.field.setAttribute('accept', this.options.accept)
+    this.field.setAttribute('multiple', this.options.multiple)
 
     // Add label before the field
     this.field.setAttribute('name', this.options.name)
