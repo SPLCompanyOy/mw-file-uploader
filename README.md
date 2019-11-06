@@ -53,8 +53,6 @@ In addition to the `options` property, FileUploader exposes additional propertie
 
 * `field`
 * `fileList` contains all the added files
-* `value` attribute of the input field
-* `files` attribute of the input field
 
 ### Methods
 
