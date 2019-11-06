@@ -26,6 +26,7 @@ module.exports = function (options) {
   this.add = function (files) {
     if (this.fileList.length > 0) this.fileList = []
     let addedFiles = []
+
     files.forEach(file => {
       const newFile = new File(file, this.fileList.length + 1)
       addedFiles.push(newFile)
@@ -47,7 +48,7 @@ module.exports = function (options) {
         : null
 
     // set up the field
-    this.field.addEventListener('change', handleAddEvent)
+    this.field.addEventListener('change', handleChange)
     this.field.setAttribute('class', this.options.fieldClass)
     this.field.setAttribute('accept', this.options.accept)
     if (this.options.multiple) this.field.setAttribute('multiple', '')
@@ -89,10 +90,11 @@ module.exports = function (options) {
     }
   }.bind(this)
 
-  const handleAddEvent = function (event) {
-    // if file already exists, clear the fileList
-    // @NOTE: if multiple file loading is later supported, this logic will need to be updated
-    this.add(event.target.files)
+  const handleChange = function (event) {
+    // event.target.files is a FileList object, which is iterable
+    // an array is created from it for consistency purposes
+    const filesArray = Array.from(event.target.files)
+    this.add(filesArray)
   }.bind(this)
 
   const drop = function (event) {
