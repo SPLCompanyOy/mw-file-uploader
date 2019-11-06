@@ -8,7 +8,7 @@ With [npm](https://www.npmjs.com/):
 
 ```javascript
 // last stable
-npm install mw-file-uploader@1.1.0
+npm install mw-file-uploader@1.2.0
 ```
 
 ## Usage
@@ -61,6 +61,7 @@ In addition to the `options` property, FileUploader exposes additional propertie
 
 * `add(files)`
 * `remove()`
+* `open()`
 
 ## License
 
