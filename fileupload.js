@@ -40,6 +40,10 @@ module.exports = function (options) {
     this.options.onRemoveFile()
   }
 
+  this.open = function () {
+    this.field.click()
+  }
+
   const config = function () {
     this.field =
       this.options.field && this.options.field.nodeName
