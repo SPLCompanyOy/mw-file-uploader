@@ -50,7 +50,7 @@ module.exports = function (options) {
     this.field.addEventListener('change', handleAddEvent)
     this.field.setAttribute('class', this.options.fieldClass)
     this.field.setAttribute('accept', this.options.accept)
-    this.field.setAttribute('multiple', this.options.multiple)
+    if (this.options.multiple) this.field.setAttribute('multiple', '')
 
     // Add label before the field
     this.field.setAttribute('name', this.options.name)
