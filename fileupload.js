@@ -24,7 +24,6 @@ module.exports = function (options) {
   this.fileList = []
 
   this.add = function (files) {
-    if (this.fileList.length > 0) this.fileList = []
     let addedFiles = []
 
     files.forEach(file => {
