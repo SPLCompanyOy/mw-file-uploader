@@ -25,13 +25,23 @@ module.exports = function (options) {
     let addedFiles = []
 
     files.forEach(file => {
-      const newFile = new File(file, this.fileList.length + 1)
+      const newFile = new File(file, createNewId())
       addedFiles.push(newFile)
       this.fileList.push(newFile)
     })
 
     this.options.onAddFile(addedFiles)
   }
+
+  const createNewId = function () {
+    let lastId = 0
+
+    this.fileList.forEach(file => {
+      if (file.id > lastId) lastId = file.id
+    })
+
+    return lastId + 1
+  }.bind(this)
 
   this.remove = function (files = []) {
     if (typeof files === 'string' ||typeof files === 'number') {
@@ -43,10 +53,10 @@ module.exports = function (options) {
     }
 
     if (Array.isArray(files) && files.length > 0) {
-      files.forEach(file => {
-        const fileIndex = this.findIndex(parseInt(files))
-        this.fileList.splice(fileIndex)
+      files.forEach((file, index) => {
+        this.fileList.splice(index)
       })
+
       this.options.onRemoveFile()
       return
     }
