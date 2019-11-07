@@ -33,9 +33,26 @@ module.exports = function (options) {
     this.options.onAddFile(addedFiles)
   }
 
-  this.remove = function () {
+  this.remove = function (files = []) {
+    if (typeof files === 'string' ||typeof files === 'number') {
+      const fileIndex = this.findIndex(parseInt(files))
+      this.fileList.splice(fileIndex)
+
+      this.options.onRemoveFile()
+      return
+    }
+
+    if (Array.isArray(files) && files.length > 0) {
+      files.forEach(file => {
+        const fileIndex = this.findIndex(parseInt(files))
+        this.fileList.splice(fileIndex)
+      })
+      this.options.onRemoveFile()
+      return
+    }
+
     this.fileList = []
-    this.options.onRemoveFile()
+    return
   }
 
   this.open = function () {
