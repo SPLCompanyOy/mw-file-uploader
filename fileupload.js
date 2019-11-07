@@ -45,7 +45,7 @@ module.exports = function (options) {
 
   this.remove = function (files = []) {
     if (typeof files === 'string' || typeof files === 'number') {
-      const parsedId = parseInt(id, 10)
+      const parsedId = parseInt(files, 10)
       const fileIndex = this.fileList.findIndex(file => file.id === parsedId)
       this.fileList.splice(fileIndex)
 
