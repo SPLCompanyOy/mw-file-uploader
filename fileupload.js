@@ -47,16 +47,16 @@ module.exports = function (options) {
     if (typeof files === 'string' || typeof files === 'number') {
       const parsedId = parseInt(files, 10)
       const fileIndex = this.fileList.findIndex(file => file.id === parsedId)
-      const removedFile = this.fileList.splice(fileIndex, 1)
+      const removedFiles = this.fileList.splice(fileIndex, 1)
 
-      this.options.onRemoveFile([removedFile])
+      this.options.onRemoveFile(removedFiles)
       return
     }
 
     if (Array.isArray(files) && files.length > 0) {
       let removedFiles = []
       files.forEach((file, index) => {
-        removedFiles.push(this.fileList.splice(index, 1))
+        removedFiles.push(this.fileList.splice(index, 1)[0])
       })
 
       this.options.onRemoveFile(removedFiles)
