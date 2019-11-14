@@ -8,7 +8,7 @@ With [npm](https://www.npmjs.com/):
 
 ```javascript
 // last stable
-npm install mw-file-uploader@1.3.7
+npm install mw-file-uploader@1.3.8
 ```
 
 ## Usage
