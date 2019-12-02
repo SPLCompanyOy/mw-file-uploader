@@ -117,7 +117,8 @@ module.exports = function (options) {
   }.bind(this)
 
   const drop = function (event) {
-    this.add(event.dataTransfer.files)
+    const filesArray = Array.from(event.dataTransfer.files)
+    this.add(filesArray)
   }.bind(this)
 
   config()
