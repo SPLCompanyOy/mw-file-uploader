@@ -8,7 +8,7 @@ With [npm](https://www.npmjs.com/):
 
 ```javascript
 // last stable
-npm install mw-file-uploader@1.3.8
+npm install mw-file-uploader@1.4.0
 ```
 
 ## Usage
@@ -49,8 +49,8 @@ Available options are:
 | dropzone      | HTMLElement | `null` if `allowDrop` is `false`. If `allowDrop` is `true` and dropzone element has not been defined, FileUploader will create an empty `<div>` below the input element. | Any HTML element where files can be dragged. Only works if `allowDrop` is `true`. |
 | onAddFile     | function    | `() => {}`              | Callback function that gets passed an array of the added files |
 | onRemoveFile  | function    | `() => {}`              | Callback function that gets passed an array of the removed files |
-| fieldClass    | string      | `'file-uploader-input'` | Class(es) set to the input field. |
-| dropzoneClass | string      | `'file-uploader-dropzone'` | Class(es) set to the dropzone element. |
+| fieldClass    | string      | `'file-uploader-input'` | Class(es) added to the input field. |
+| dropzoneClass | string      | `'file-uploader-dropzone'` | Class(es) added to the dropzone element. |
 
 ### Properties
 

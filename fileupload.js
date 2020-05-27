@@ -79,7 +79,7 @@ module.exports = function (options) {
 
     // set up the field
     this.field.addEventListener('change', handleChange)
-    this.field.setAttribute('class', this.options.fieldClass)
+    this.field.classList.add(this.options.fieldClass)
     this.field.setAttribute('accept', this.options.accept)
     if (this.options.multiple) this.field.setAttribute('multiple', '')
 
@@ -105,7 +105,7 @@ module.exports = function (options) {
       })
 
       this.options.dropzone.addEventListener('drop', drop)
-      this.options.dropzone.setAttribute('class', this.options.dropzoneClass)
+      this.options.dropzone.classList.add(this.options.dropzoneClass)
     }
   }.bind(this)
 
