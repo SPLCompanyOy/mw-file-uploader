@@ -55,8 +55,10 @@ module.exports = function (options) {
 
     if (Array.isArray(files) && files.length > 0) {
       let removedFiles = []
-      files.forEach((file, index) => {
-        removedFiles.push(this.fileList.splice(index, 1)[0])
+
+      files.forEach(file => {
+        const fileIndex = this.fileList.findIndex(item => item.id === file.id)
+        removedFiles.push(this.fileList.splice(fileIndex, 1)[0])
       })
 
       this.options.onRemoveFile(removedFiles)
